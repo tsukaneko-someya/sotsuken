@@ -5,6 +5,7 @@ frying_pan.glb
 
 kitchen.glb
 調理台の3D素材
+（後でフライパンの3D素材とセットにしちゃうかも）
 
 sotsuken.blend
 blender(3D素材を作るときに使うやつ)のデータ
@@ -14,3 +15,4 @@ sotsuken.html
 卒業研究で使うプログラム
 
 sotsuken_test.html
+プログラミングでちょっと試したいことがあるときとかに使う？
