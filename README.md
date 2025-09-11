@@ -3,13 +3,8 @@
 frying_pan.glb
 フライパンの3D素材 
 
-kitchen.glb
+kitchen.glb → kitchen_s.glb
 調理台の3D素材
-（後でフライパンの3D素材とセットにしちゃうかも）
-
-sotsuken.blend
-blender(3D素材を作るときに使うやつ)のデータ
-これはあまり使わないかも
 
 sotsuken.html
 卒業研究で使うプログラム(本番用)
