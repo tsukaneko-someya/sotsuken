@@ -11,3 +11,5 @@ sotsuken.html
 
 sotsuken_test.html
 プログラミングでちょっと試したいことがあるときとかに使う？（練習用）
+
+9/11 sotsuken.htmlを更新
