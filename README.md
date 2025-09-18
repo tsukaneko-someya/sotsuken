@@ -6,6 +6,9 @@ frying_pan.glb
 kitchen.glb → kitchen_s.glb
 調理台の3D素材
 
+sotsuken.blend,sotsuken.blend1
+3D素材のデータ
+
 sotsuken.html
 卒業研究で使うプログラム(本番用)
 
