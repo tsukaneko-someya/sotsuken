@@ -9,7 +9,7 @@ kitchen.glb → kitchen_s.glb
 classroom.glb
 教室の3D素材
 
-sotsuken.blend,sotsuken.blend1
+～.blendまたは～.blend1
 3D素材のデータ
 
 sotsuken.html
@@ -19,3 +19,4 @@ sotsuken_test.html
 プログラミングでちょっと試したいことがあるときとかに使う？（練習用）
 
 9/11 sotsuken.htmlを更新
+9/19 classroom.glbを追加、sotsuken.htmlを更新
