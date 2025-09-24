@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@bd6bf821eda2522f84a1dc2b6d78674dfcd06e4a/dist/aframe-master.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
+
+    <title>色覚多様性に配慮した調理体験のためのVR教材開発</title>
+</head>
+<body>
+    <a-scene vr-mode-ui="enabled: false"> <!-- position:左右 上下 手前奥 -->
+      <a-gltf-model src="frying_pan.glb" position="-0.18 0.64 -0.19" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="0 0 -1" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-2 0 -1" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-4 0 -1" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="0 0 -4" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-2 0 -4" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-4 0 -4" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="0 0 -7" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-2 0 -7" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-2 0 -9.5" rotation="0 0 0"></a-gltf-model>
+      <a-gltf-model src="kitchen_s.glb" position="-4 0 -7" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
+      <!-- <a-plane src = "#ground" height = "100" width = "100" rotation = "-90 0 0" ></a-plane> -->
+
+      <a-entity id="introText" troika-text="value: 色覚多様性について\n色の見え方が人によって異なることを理解するために、これから実験を始めます。; color: black; fontSize: 0.4; maxWidth: 3; align: center;" position="0 2 -3"></a-entity>
+
+      
+      <!-- ctrl+Alt+iでテストモード -->
+
+      <!-- カメラ -->
+      <!-- <a-entity position="0 1 10" rotation="0 0 0">
+        <a-camera position="0 0 0"></a-camera>
+      </a-entity> -->
+    </a-scene>
+
+    <script>
+      // 5秒後に説明を消して実験開始
+      setTimeout(() => {
+        // 説明テキストを非表示
+        document.querySelector('#introText').setAttribute('visible', 'false');
+        // 実験の3Dモデルを表示
+        document.querySelectorAll('a-gltf-model').forEach(m => {
+          m.setAttribute('visible', 'true');
+        });
+      }, 5000);
+    </script>
+</body>
+</html>
