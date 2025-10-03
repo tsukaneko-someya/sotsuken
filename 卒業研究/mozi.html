@@ -1,51 +1,136 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@bd6bf821eda2522f84a1dc2b6d78674dfcd06e4a/dist/aframe-master.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script
+    src="https://cdn.jsdelivr.net/gh/aframevr/aframe@bd6bf821eda2522f84a1dc2b6d78674dfcd06e4a/dist/aframe-master.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
-
-    <title>色覚多様性に配慮した調理体験のためのVR教材開発</title>
+  <title>色覚多様性に配慮した調理体験のためのVR教材開発</title>
 </head>
+
 <body>
-    <a-scene vr-mode-ui="enabled: false"> <!-- position:左右 上下 手前奥 -->
-      <a-gltf-model src="frying_pan.glb" position="-0.18 0.64 -0.19" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="0 0 -1" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-2 0 -1" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-4 0 -1" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="0 0 -4" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-2 0 -4" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-4 0 -4" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="0 0 -7" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-2 0 -7" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-2 0 -9.5" rotation="0 0 0"></a-gltf-model>
-      <a-gltf-model src="kitchen_s.glb" position="-4 0 -7" rotation="0 90 0"></a-gltf-model>
-      <a-gltf-model src="classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
-      <!-- <a-plane src = "#ground" height = "100" width = "100" rotation = "-90 0 0" ></a-plane> -->
+  <a-scene vr-mode-ui="enabled: false">
+    <!-- position:左右 上下 手前奥 -->
+    <a-sky color="#9ff"></a-sky>
+    <a-gltf-model src="frying_pan.glb" position="-0.18 0.64 -0.19" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -9.5" rotation="0 0 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="classroom.glb" position="0 0 -2" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model id="niku_0" src="yakiniku_00.glb" position="0 -0.05 -4" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model id="niku_12" src="yakiniku_12.glb" position="0 -0.05 -4" rotation="0 90 0" visible="false"></a-gltf-model>
+    <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0" visible="false">
+    </a-gltf-model>
+    <!-- <a-box yaku position="1 1 -2" height="0.3" depth="0.3" width="0.3"></a-box> -->
 
-      <a-entity id="introText" troika-text="value: 色覚多様性について\n色の見え方が人によって異なることを理解するために、これから実験を始めます。; color: black; fontSize: 0.4; maxWidth: 3; align: center;" position="0 2 -3"></a-entity>
+    <a-plane id="textBg" position="0 1.5 -1" color="#fff" opacity="0.7" height="1.5" width="3" rotation="0 0 0">
+    </a-plane>
+    <a-entity id="introText" troika-text="value: ;" position="0 1.5 -0.9"></a-entity>
 
-      
-      <!-- ctrl+Alt+iでテストモード -->
+    <!-- 画像 -->
+    <a-image id="introImage" src="niku.jpg" position="0 1.5 -0.9" width="1.5" height="1" visible="false"></a-image>
 
-      <!-- カメラ -->
-      <!-- <a-entity position="0 1 10" rotation="0 0 0">
-        <a-camera position="0 0 0"></a-camera>
-      </a-entity> -->
-    </a-scene>
 
-    <script>
-      // 5秒後に説明を消して実験開始
-      setTimeout(() => {
-        // 説明テキストを非表示
-        document.querySelector('#introText').setAttribute('visible', 'false');
-        // 実験の3Dモデルを表示
-        document.querySelectorAll('a-gltf-model').forEach(m => {
-          m.setAttribute('visible', 'true');
-        });
-      }, 5000);
-    </script>
+
+
+    <!-- ctrl+Alt+iでテストモード -->
+
+    <!-- カメラ -->
+    <a-entity position="0 1.5 0" rotation="0 0 0">
+
+      <a-camera position="0 0 0">
+
+        <!-- <a-cursor></a-cursor> -->
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+      </a-camera>
+    </a-entity>
+  </a-scene>
+
+  <script>
+    // AFRAME.registerComponent("yaku", {
+    //   init: function () {
+    //     const niku_0 = document.getElementById("niku_0");
+    //     const niku_12 = document.getElementById("niku_12");
+    //     this.el.addEventListener("click", function (e) {
+    //       niku_0.remove(); //オブジェクトを削除する
+
+    //     });
+    //   }
+    // });
+
+    document.getElementById('niku_0').addEventListener('model-loaded', (e) => {
+      const model = e.detail.model; // three.js の Object3D
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.material.transparent = true;  // 半透明にするために必要
+          node.material.opacity = 0.9;       // 透明度を設定
+        }
+      });
+    });
+
+
+    const textList = [ "色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
+      "このように、\n同じ肉でも人によって見え方が違います。",
+      "それでは、実際に体験してもらいましょう！\n体験が終わったら、ぜひ感想を教えてください。"];
+
+    let textNumber = 0; // ← クリックの進行状況を管理
+
+  // HTML内の要素を取得
+  const introText = document.getElementById('introText');
+  const introImage = document.getElementById('introImage');
+  const textBg = document.getElementById('textBg');
+
+  // 共通のテキストスタイル
+  function setText(value) {
+    introText.setAttribute("troika-text", {
+      value: value,
+      color: "black",
+      fontSize: "0.1",
+      lineHeight: "1.0",
+      align: "center"
+    });
+  }
+
+  // 最初のテキストを表示
+  setText(textList[0]);
+
+  textBg.addEventListener('click', () => {
+    if (textNumber === 0) {
+      // 1回目クリック → 画像だけ表示（テキストは消す）
+      introText.setAttribute('visible', 'false');
+      introImage.setAttribute('visible', 'true');
+      textNumber++;
+    } else if (textNumber === 1) {
+      // 2回目クリック → 画像を消して次のテキスト
+      introImage.setAttribute('visible', 'false');
+      introText.setAttribute('visible', 'true');
+      setText(textList[1]);
+      textNumber++;
+    } else if (textNumber === 2) {
+      // 3回目クリック → さらに次のテキスト
+      setText(textList[2]);
+      textNumber++;
+    } else {
+      // 4回目クリック → 説明終了、3Dモデル表示
+      introText.setAttribute('visible', 'false');
+      textBg.setAttribute('visible', 'false');
+
+      document.querySelectorAll('a-gltf-model').forEach(m => {
+        m.setAttribute('visible', 'true');
+      });
+    }
+  });
+</script>
 </body>
+
 </html>
