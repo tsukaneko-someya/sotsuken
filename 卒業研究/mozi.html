@@ -14,31 +14,41 @@
 <body>
   <a-scene vr-mode-ui="enabled: false">
     <!-- position:左右 上下 手前奥 -->
+    <!-- 背景 -->
     <a-sky color="#9ff"></a-sky>
-    <a-gltf-model src="frying_pan.glb" position="-0.18 0.64 -0.19" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="0 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-2 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-4 0 -1" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="0 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-2 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-4 0 -4" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="0 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-2 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-2 0 -9.5" rotation="0 0 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="kitchen_s.glb" position="-4 0 -7" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="classroom.glb" position="0 0 -2" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model id="niku_0" src="yakiniku_00.glb" position="0 -0.05 -4" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model id="niku_12" src="yakiniku_12.glb" position="0 -0.05 -4" rotation="0 90 0" visible="false"></a-gltf-model>
-    <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0" visible="false">
+    <!-- フライパン -->
+    <a-gltf-model src="frying_pan.glb" position="-0.18 0.64 -0.19" rotation="0 90 0"></a-gltf-model>
+    <!-- 調理台 -->
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -1" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -1" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -1" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -4" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -4" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -4" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="0 0 -7" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -7" rotation="0 90 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-2 0 -9.5" rotation="0 0 0"></a-gltf-model>
+    <a-gltf-model src="kitchen_s.glb" position="-4 0 -7" rotation="0 90 0"></a-gltf-model>
+    <!-- 教室 -->
+    <a-gltf-model src="classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
+    <!-- 肉 -->
+    <a-gltf-model id="niku_0" src="yakiniku_00.glb" position="0 -0.05 -4" rotation="0 90 0">
     </a-gltf-model>
-    <!-- <a-box yaku position="1 1 -2" height="0.3" depth="0.3" width="0.3"></a-box> -->
+    <a-gltf-model id="niku_1" src="yakiniku_01.glb" position="0 -0.05 -4" rotation="0 90 0">
+    </a-gltf-model>
+    <a-gltf-model id="niku_2" src="yakiniku_s3.glb" position="0 -0.05 -4" rotation="0 90 0">
+    </a-gltf-model>
+    <!-- はし -->
+    <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
+    </a-gltf-model>
+    <!-- ボタン -->
 
-    <a-plane id="textBg" position="0 1.5 -1" color="#fff" opacity="0.7" height="1.5" width="3" rotation="0 0 0">
+     <!--<a-plane id="textBg" position="0 1.5 -1" color="#fff" opacity="0.7" height="1.5" width="3" rotation="0 0 0">
     </a-plane>
-    <a-entity id="introText" troika-text="value: ;" position="0 1.5 -0.9"></a-entity>
+    <a-entity id="introText" troika-text="value: ;" position="0 1.5 -0.99"></a-entity>-->
 
-    <!-- 画像 -->
-    <a-image id="introImage" src="niku.jpg" position="0 1.5 -0.9" width="1.5" height="1" visible="false"></a-image>
+   <!-- 画像を3枚用意して切り替える -->
+    <a-image id="introImage" src="1.jpeg" position="0 1.5 -1" width="2.3" height="1.6"></a-image>
 
 
 
@@ -48,8 +58,15 @@
     <!-- カメラ -->
     <a-entity position="0 1.5 0" rotation="0 0 0">
 
-      <a-camera position="0 0 0">
 
+      <a-camera position="0 0 0">
+        <!-- ボタン -->
+        <!-- 焼肉用 -->
+        <a-plane yaku class="btn" position="0.7 -0.3 -0.7" height="0.15" width="0.3"></a-plane>
+        <!-- 色変更 -->
+        <a-plane class="btn" position="0.8 0.4 -0.7" height="0.2" width="0.2" color="#ff0000"></a-plane>
+        <a-plane class="btn" position="0.6 0.4 -0.7" height="0.2" width="0.2" color="#00ff00"></a-plane>
+        <a-plane class="btn" position="0.4 0.4 -0.7" height="0.2" width="0.2" color="#0000ff"></a-plane>
         <!-- <a-cursor></a-cursor> -->
         <a-entity cursor="rayOrigin: mouse"></a-entity>
       </a-camera>
@@ -57,80 +74,127 @@
   </a-scene>
 
   <script>
-    // AFRAME.registerComponent("yaku", {
-    //   init: function () {
-    //     const niku_0 = document.getElementById("niku_0");
-    //     const niku_12 = document.getElementById("niku_12");
-    //     this.el.addEventListener("click", function (e) {
-    //       niku_0.remove(); //オブジェクトを削除する
+    // 変数
+    let meshes = [];
+    const nikuImg = document.getElementById('introImage');
+    const niku_0 = document.getElementById("niku_0");
+    let running = false;
+    let textNumber = 0;
+    const introText = document.getElementById('introText');
+    const textBg = document.getElementById('textBg');
+    let TextAndBg = document.querySelectorAll('#textBg, #introText');
+    let imageNumber = 0;
+    const introImage = document.getElementById('introImage');
+    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg"];
 
-    //     });
-    //   }
-    // });
+    // 表示する文字
+   // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
+    //  "このように、\n同じ肉でも人によって見え方が違います。",
+    //  "それでは、実際に体験してもらいましょう！\n体験が終わったら、ぜひ感想を教えてください。"];
 
-    document.getElementById('niku_0').addEventListener('model-loaded', (e) => {
-      const model = e.detail.model; // three.js の Object3D
-      model.traverse((node) => {
-        if (node.isMesh) {
-          node.material.transparent = true;  // 半透明にするために必要
-          node.material.opacity = 0.9;       // 透明度を設定
-        }
+
+    // 調理室の表示
+    document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
+      m.setAttribute('visible', 'false');
+    });
+
+    // 肉の初期設定
+    niku_0.addEventListener('model-loaded', (e) => {
+        const model = e.detail.model; // three.js の Object3D
+        model.traverse((node) => {
+          if (node.isMesh) {
+            node.material.transparent = true;  // 半透明にするために必要
+            node.material.opacity = 1.0;   // 透明度を設定
+            meshes.push(node)
+            console.log(meshes);
+          }
+      });
+    });
+    niku_2.addEventListener('model-loaded', (e) => {
+        const model = e.detail.model; // three.js の Object3D
+        model.traverse((node) => {
+          if (node.isMesh) {
+            node.material.transparent = true;  // 半透明にするために必要
+            node.material.opacity = 0.0;   // 透明度を設定
+            meshes.push(node)
+            console.log(meshes);
+          }
       });
     });
 
-
-    const textList = [ "色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
-      "このように、\n同じ肉でも人によって見え方が違います。",
-      "それでは、実際に体験してもらいましょう！\n体験が終わったら、ぜひ感想を教えてください。"];
-
-    let textNumber = 0; // ← クリックの進行状況を管理
-
-  // HTML内の要素を取得
-  const introText = document.getElementById('introText');
-  const introImage = document.getElementById('introImage');
-  const textBg = document.getElementById('textBg');
-
-  // 共通のテキストスタイル
-  function setText(value) {
-    introText.setAttribute("troika-text", {
-      value: value,
-      color: "black",
-      fontSize: "0.1",
-      lineHeight: "1.0",
-      align: "center"
+    // クリックイベント(焼肉)
+    AFRAME.registerComponent("yaku", {
+      init: function () {
+        this.el.addEventListener("click", function (e) {
+          if (!running) {
+            running = true;
+          } else {
+            running = false;
+          }
+          // console.log(running)
+          setInterval(function () {
+            meshes.forEach(mesh => {
+              // ボタンクリックで肉を焼く（再度クリックで焼くのをやめる）
+              if (mesh.material.opacity > 0 && running) {
+                mesh.material.opacity -= 0.005;
+              } if (mesh.material.opacity > 0 && running) {
+                mesh.material.opacity -= 0.005;
+              }
+            });
+          }, 100);
+        });
+      }
     });
-  }
 
-  // 最初のテキストを表示
-  setText(textList[0]);
 
-  textBg.addEventListener('click', () => {
-    if (textNumber === 0) {
-      // 1回目クリック → 画像だけ表示（テキストは消す）
-      introText.setAttribute('visible', 'false');
-      introImage.setAttribute('visible', 'true');
-      textNumber++;
-    } else if (textNumber === 1) {
-      // 2回目クリック → 画像を消して次のテキスト
-      introImage.setAttribute('visible', 'false');
-      introText.setAttribute('visible', 'true');
-      setText(textList[1]);
-      textNumber++;
-    } else if (textNumber === 2) {
-      // 3回目クリック → さらに次のテキスト
-      setText(textList[2]);
-      textNumber++;
+    // クリックで次の画像に進む
+    introImage.addEventListener('click', () => {
+    if (imageNumber < imageList.length - 1) {
+      imageNumber++;
+      introImage.setAttribute('src', imageList[imageNumber]);
     } else {
-      // 4回目クリック → 説明終了、3Dモデル表示
-      introText.setAttribute('visible', 'false');
-      textBg.setAttribute('visible', 'false');
-
-      document.querySelectorAll('a-gltf-model').forEach(m => {
+      // 最後の画像のあとで画像を非表示にして3Dモデルを表示
+      introImage.setAttribute('visible', 'false');
+      document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
         m.setAttribute('visible', 'true');
       });
     }
   });
-</script>
+
+
+    // 文字表示
+    //setInterval(function () {
+     // introText.setAttribute("troika-text", {
+     //   value: textList[textNumber],
+      //  color: "black",
+      //  fontSize: "0.1",
+       // lineHeight: "1.0",
+      //  align: "center"
+      //});
+
+   // }, 100);
+
+    // クリックして次の文章
+    //TextAndBg.forEach(el => {
+    //  el.addEventListener('click', (e) => {
+    //    if (textNumber < textList.length - 1) {
+     //     textNumber++;
+      //    console.log(textList[textNumber]);
+      //  } else {
+      //    introText.setAttribute('visible', 'false');
+      //    textBg.setAttribute('visible', 'false');
+          // 実験の3Dモデルを表示
+      //    document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
+      //      m.setAttribute('visible', 'true');
+       //   });
+      //  }
+     // });
+   // });
+
+
+
+
+  </script>
 </body>
 
 </html>
