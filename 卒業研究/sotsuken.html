@@ -79,7 +79,7 @@
     const niku_0 = document.getElementById("niku_0");
     let running = false;
     const roomColor = document.querySelector('.classroom');
-    const kitchenColor = document.querySelector('.kitchen');
+    const kitchenColor = document.querySelectorAll('.kitchen');
     let textNumber = 0;
     const introText = document.getElementById('introText');
     const textBg = document.getElementById('textBg');
@@ -150,7 +150,9 @@
       init: function () {
         this.el.addEventListener("click", function (e) {
           roomColor.setAttribute('src', 'classroom.glb');
-          kitchenColor.setAttribute('src', 'kitchen_s.glb');
+          kitchenColor.forEach(m => {
+            m.setAttribute('src', 'kitchen_s.glb');
+          });
         });
       }
     });
@@ -158,8 +160,9 @@
       init: function () {
         this.el.addEventListener("click", function (e) {
           roomColor.setAttribute('src', 'classroom_1.glb');
-          kitchenColor.setAttribute('src', 'kitchen_s1.glb');
-
+          kitchenColor.forEach(m => {
+            m.setAttribute('src', 'kitchen_s1.glb');
+          });
         });
       }
     });
@@ -167,8 +170,9 @@
       init: function () {
         this.el.addEventListener("click", function (e) {
           roomColor.setAttribute('src', 'classroom_2.glb');
-          kitchenColor.setAttribute('src', 'kitchen_s2.glb');
-
+          kitchenColor.forEach(m => {
+            m.setAttribute('src', 'kitchen_s2.glb');
+          });
         });
       }
     });
@@ -176,12 +180,13 @@
       init: function () {
         this.el.addEventListener("click", function (e) {
           roomColor.setAttribute('src', 'classroom_3.glb');
-          kitchenColor.setAttribute('src', 'kitchen_s3.glb');
-
+          kitchenColor.forEach(m => {
+            m.setAttribute('src', 'kitchen_s3.glb');
+          });
         });
       }
     });
-    
+
     // 文字表示
     setInterval(function () {
       introText.setAttribute("troika-text", {
