@@ -133,13 +133,13 @@
       init: function () {
         ctlR.addEventListener("raycaster-intersection", function (e) {
           // this.el.addEventListener("click", function (e) {
-          ctlR.addEventListener("triggerdown", function (e) {
+          this.addEventListener("triggerup", function (e) {
             if (!running) {
               running = true;
             } else {
               running = false;
             }
-            console.log(running)
+            // console.log(running)
             setInterval(function () {
               meshes.forEach(mesh => {
                 // ボタンクリックで肉を焼く（再度クリックで焼くのをやめる）
@@ -220,6 +220,7 @@
         introImage.setAttribute('visible', 'false');
         document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
           m.setAttribute('visible', 'true');
+          console.log()
         });
       }
     });
