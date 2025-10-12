@@ -23,3 +23,7 @@ sotsuken_test.html
 1.jpeg,2.jpeg,3.jpegの最初の画像
 
 画像クリックして調理実習にいくのがmozi.htmlにいれた
+
+10/12 URLを取得できたので次回VRゴーグルでみられると思う。URL取得のため、sotsuken.htmlからindex.htmlに名前を変更。素材等を卒業研究フォルダではなく直に配置。
+
+URL：https://tsukaneko-someya.github.io/sotsuken/
