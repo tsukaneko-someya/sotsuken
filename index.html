@@ -37,7 +37,7 @@
     </a-gltf-model>
     <a-gltf-model id="niku_1" src="yakiniku_01.glb" position="0 0 -4" rotation="0 90 0">
     </a-gltf-model>
-    <a-gltf-model id="niku_2" src="yakiniku_s3.glb" position="0 0 -4" rotation="0 90 0">
+    <a-gltf-model id="niku_2" src="yakiniku_02.glb" position="0 0.0001 -4" rotation="0 90 0">
     </a-gltf-model>
     <!-- はし -->
     <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
@@ -79,7 +79,9 @@
     // 変数
     let ctlR = document.querySelector('#ctlR');
     let ctlL = document.querySelector('#ctlL');
-    let meshes = [];
+    let meshes0 = [];
+    let meshes1 = [];
+    let meshes2 = [];
     const nikuImg = document.getElementById('introImage');
     const niku_0 = document.getElementById("niku_0");
     let running = false;
@@ -92,6 +94,7 @@
     let imageNumber = 0;
     const introImage = document.getElementById('introImage');
     const imageList = ["1.jpeg", "2.jpeg", "3.jpeg"];
+    let fadingOut = true;
 
     // 表示する文字
     // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
@@ -111,8 +114,21 @@
         if (node.isMesh) {
           node.material.transparent = true;  // 半透明にするために必要
           node.material.opacity = 1.0;   // 透明度を設定
-          meshes.push(node)
-          console.log(meshes);
+          meshes0.push(node)
+          node.renderOrder = 2;
+          console.log(meshes0);
+        }
+      });
+    });
+    niku_1.addEventListener('model-loaded', (e) => {
+      const model = e.detail.model; // three.js の Object3D
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.material.transparent = true;  // 半透明にするために必要
+          node.material.opacity = 1.0;   // 透明度を設定
+          meshes1.push(node)
+          node.renderOrder = 1;
+          console.log(meshes1);
         }
       });
     });
@@ -122,8 +138,9 @@
         if (node.isMesh) {
           node.material.transparent = true;  // 半透明にするために必要
           node.material.opacity = 0.0;   // 透明度を設定
-          meshes.push(node)
-          console.log(meshes);
+          meshes2.push(node)
+          node.renderOrder = 3;
+          console.log(meshes2);
         }
       });
     });
@@ -131,29 +148,54 @@
     // クリックイベント(焼肉)
     AFRAME.registerComponent("yaku", {
       init: function () {
-        ctlR.addEventListener("raycaster-intersection", function (e) {
-          // this.el.addEventListener("click", function (e) {
-          this.addEventListener("triggerup", function (e) {
-            if (!running) {
-              running = true;
-            } else {
-              running = false;
-            }
-            // console.log(running)
-            setInterval(function () {
-              meshes.forEach(mesh => {
-                // ボタンクリックで肉を焼く（再度クリックで焼くのをやめる）
-                if (mesh.material.opacity > 0 && running) {
-                  mesh.material.opacity -= 0.005;
-                } if (mesh.material.opacity > 0 && running) {
-                  mesh.material.opacity -= 0.005;
-                }
-              });
-            }, 100);
-          });
+        let intersecting = false; // レイが当たっているかどうか
+        let running = false;      // 焼いている状態かどうか（ON/OFF）
+
+        // レイが当たった時
+        ctlR.addEventListener("raycaster-intersection", (e) => {
+          intersecting = true;
         });
+
+        // レイが外れた時
+        ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
+          intersecting = false;
+        });
+
+        // トリガーを離した時に切り替え
+        ctlR.addEventListener("triggerup", (e) => {
+          if (intersecting) {
+            running = !running;
+          }
+        });
+
+
+        // 焼きループ（常に実行、runningがtrueの時だけ処理）
+        setInterval(() => {
+          if (!running) return;
+          if (fadingOut) {
+            // mesh0 をフェードアウト
+            let allZero = true;
+            meshes0.forEach(mesh0 => {
+              mesh0.material.opacity -= 0.005;
+              if (mesh0.material.opacity < 0) mesh0.material.opacity = 0;
+              if (mesh0.material.opacity > 0) allZero = false;
+            });
+
+            // 全部0になったら次へ
+            if (allZero) fadingOut = false;
+
+          } else {
+            // mesh2 をフェードイン
+            meshes2.forEach(mesh2 => {
+              mesh2.material.opacity += 0.005;
+              if (mesh2.material.opacity > 1) mesh2.material.opacity = 1;
+            });
+          }
+        }, 100);
       }
     });
+
+
 
 
     // クリックイベント(色)
@@ -224,35 +266,6 @@
         });
       }
     });
-
-    // // 文字表示
-    // setInterval(function () {
-    //   introText.setAttribute("troika-text", {
-    //     value: textList[textNumber],
-    //     color: "black",
-    //     fontSize: "0.1",
-    //     lineHeight: "1.0",
-    //     align: "center"
-    //   });
-
-    // }, 100);
-
-    // // クリックして次の文章
-    // TextAndBg.forEach(el => {
-    //   el.addEventListener('click', (e) => {
-    //     if (textNumber < textList.length - 1) {
-    //       textNumber++;
-    //       console.log(textList[textNumber]);
-    //     } else {
-    //       introText.setAttribute('visible', 'false');
-    //       textBg.setAttribute('visible', 'false');
-    //       // 実験の3Dモデルを表示
-    //       document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
-    //         m.setAttribute('visible', 'true');
-    //       });
-    //     }
-    //   });
-    // });
 
 
 
