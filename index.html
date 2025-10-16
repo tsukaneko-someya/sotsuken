@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script
     src="https://cdn.jsdelivr.net/gh/aframevr/aframe@bd6bf821eda2522f84a1dc2b6d78674dfcd06e4a/dist/aframe-master.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/aframe-troika-text/dist/aframe-troika-text.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <title>色覚多様性に配慮した調理体験のためのVR教材開発</title>
 </head>
@@ -62,10 +60,10 @@
         <!-- 焼肉用 -->
         <a-plane yaku class="btn" position="0.7 -0.3 -0.7" height="0.15" width="0.3"></a-plane>
         <!-- 色変更 -->
-        <a-plane view-t class="btn" position="0.8 0.4 -0.7" height="0.2" width="0.2" color="#ff0000"></a-plane>
-        <a-plane view-d class="btn" position="0.6 0.4 -0.7" height="0.2" width="0.2" color="#00ff00"></a-plane>
-        <a-plane view-p class="btn" position="0.4 0.4 -0.7" height="0.2" width="0.2" color="#0000ff"></a-plane>
-        <a-plane view-c class="btn" position="0.2 0.4 -0.7" height="0.2" width="0.2" color="#ffff00"></a-plane>
+        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb" class="btn" position="0.8 0.4 -0.7" height="0.2" width="0.2" color="#ff0000"></a-plane>
+        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb" class="btn" position="0.6 0.4 -0.7" height="0.2" width="0.2" color="#00ff00"></a-plane>
+        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb" class="btn" position="0.4 0.4 -0.7" height="0.2" width="0.2" color="#0000ff"></a-plane>
+        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb" class="btn" position="0.2 0.4 -0.7" height="0.2" width="0.2" color="#ffff00"></a-plane>
         <!-- <a-cursor></a-cursor> -->
 
         <a-entity id="ctlR" laser-controls="hand: right" raycaster="lineColor: red;"></a-entity>
@@ -148,22 +146,21 @@
     // クリックイベント(焼肉)
     AFRAME.registerComponent("yaku", {
       init: function () {
-        let intersecting = false; // レイが当たっているかどうか
+        let isHovering = false; // レイが当たっているかどうか
         let running = false;      // 焼いている状態かどうか（ON/OFF）
+        const el = this.el;
 
-        // レイが当たった時
         ctlR.addEventListener("raycaster-intersection", (e) => {
-          intersecting = true;
+          if (e.detail.els.includes(el)) isHovering = true; //対象のボタンがレイにあたっているか
         });
 
-        // レイが外れた時
         ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
-          intersecting = false;
+          if (e.detail.clearedEls.includes(el)) isHovering = false; //対象のボタンからレイが外れているか
         });
 
         // トリガーを離した時に切り替え
         ctlR.addEventListener("triggerup", (e) => {
-          if (intersecting) {
+          if (isHovering) {
             running = !running;
           }
         });
@@ -176,7 +173,7 @@
             // mesh0 をフェードアウト
             let allZero = true;
             meshes0.forEach(mesh0 => {
-              mesh0.material.opacity -= 0.005;
+              mesh0.material.opacity -= 0.05;
               if (mesh0.material.opacity < 0) mesh0.material.opacity = 0;
               if (mesh0.material.opacity > 0) allZero = false;
             });
@@ -187,7 +184,7 @@
           } else {
             // mesh2 をフェードイン
             meshes2.forEach(mesh2 => {
-              mesh2.material.opacity += 0.005;
+              mesh2.material.opacity += 0.05;
               if (mesh2.material.opacity > 1) mesh2.material.opacity = 1;
             });
           }
@@ -199,46 +196,118 @@
 
 
     // クリックイベント(色)
-    AFRAME.registerComponent("view-c", {
+    AFRAME.registerComponent("change-view", {
+      schema: {
+        room: { type: "string" },
+        kitchen: { type: "string" }
+      },
+
       init: function () {
-        this.el.addEventListener("click", function (e) {
-          roomColor.setAttribute('src', 'classroom.glb');
-          kitchenColor.forEach(m => {
-            m.setAttribute('src', 'kitchen_s.glb');
-          });
+        const el = this.el;
+        const room = document.querySelector(".classroom");
+        const kitchens = document.querySelectorAll(".kitchen");
+        let isHovering = false;
+
+        ctlR.addEventListener("raycaster-intersection", (e) => {
+          if (e.detail.els.includes(el)) isHovering = true; //対象のボタンがレイにあたっているか
+        });
+
+        ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
+          if (e.detail.clearedEls.includes(el)) isHovering = false; //対象のボタンからレイが外れているか
+        });
+
+        ctlR.addEventListener("triggerup", () => {
+          if (!isHovering) return;
+          room.setAttribute("src", this.data.room);
+          kitchens.forEach(k => k.setAttribute("src", this.data.kitchen));
         });
       }
     });
-    AFRAME.registerComponent("view-p", {
-      init: function () {
-        this.el.addEventListener("click", function (e) {
-          roomColor.setAttribute('src', 'classroom_1.glb');
-          kitchenColor.forEach(m => {
-            m.setAttribute('src', 'kitchen_s1.glb');
-          });
-        });
-      }
-    });
-    AFRAME.registerComponent("view-d", {
-      init: function () {
-        this.el.addEventListener("click", function (e) {
-          roomColor.setAttribute('src', 'classroom_2.glb');
-          kitchenColor.forEach(m => {
-            m.setAttribute('src', 'kitchen_s2.glb');
-          });
-        });
-      }
-    });
-    AFRAME.registerComponent("view-t", {
-      init: function () {
-        this.el.addEventListener("click", function (e) {
-          roomColor.setAttribute('src', 'classroom_3.glb');
-          kitchenColor.forEach(m => {
-            m.setAttribute('src', 'kitchen_s3.glb');
-          });
-        });
-      }
-    });
+
+
+
+    // AFRAME.registerComponent("view-c", {
+    //   init: function () {
+    //     let intersecting_c = false; // レイが当たっているかどうか
+
+    //     // レイが当たった時
+    //     ctlR.addEventListener("raycaster-intersection", (e) => {
+    //       intersecting_c = true;
+    //     });
+
+    //     // レイが外れた時
+    //     ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
+    //       intersecting_c = false;
+    //     });
+
+    //     // トリガーを離した時に切り替え
+    //     ctlR.addEventListener("triggerup", (e) => {
+    //       if (intersecting_c) {
+    //         roomColor.setAttribute('src', 'classroom.glb');
+    //         kitchenColor.forEach(m => {
+    //           m.setAttribute('src', 'kitchen_s.glb');
+    //         });
+    //       }
+    //     });
+    //     this.el.addEventListener("click", function (e) {
+    //       roomColor.setAttribute('src', 'classroom.glb');
+    //       kitchenColor.forEach(m => {
+    //         m.setAttribute('src', 'kitchen_s.glb');
+    //       });
+    //     });
+    //   }
+    // });
+    // AFRAME.registerComponent("view-p", {
+    //   init: function () {
+    //     let intersecting_p = false; // レイが当たっているかどうか
+
+    //     // レイが当たった時
+    //     ctlR.addEventListener("raycaster-intersection", (e) => {
+    //       intersecting_p = true;
+    //     });
+
+    //     // レイが外れた時
+    //     ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
+    //       intersecting_p = false;
+    //     });
+
+    //     // トリガーを離した時に切り替え
+    //     ctlR.addEventListener("triggerup", (e) => {
+    //       if (intersecting_p) {
+    //         roomColor.setAttribute('src', 'classroom_1.glb');
+    //         kitchenColor.forEach(m => {
+    //           m.setAttribute('src', 'kitchen_s1.glb');
+    //         });
+    //       }
+    //     });
+    //     this.el.addEventListener("click", function (e) {
+    //       roomColor.setAttribute('src', 'classroom_1.glb');
+    //       kitchenColor.forEach(m => {
+    //         m.setAttribute('src', 'kitchen_s1.glb');
+    //       });
+    //     });
+    //   }
+    // });
+    // AFRAME.registerComponent("view-d", {
+    //   init: function () {
+    //     this.el.addEventListener("click", function (e) {
+    //       roomColor.setAttribute('src', 'classroom_2.glb');
+    //       kitchenColor.forEach(m => {
+    //         m.setAttribute('src', 'kitchen_s2.glb');
+    //       });
+    //     });
+    //   }
+    // });
+    // AFRAME.registerComponent("view-t", {
+    //   init: function () {
+    //     this.el.addEventListener("click", function (e) {
+    //       roomColor.setAttribute('src', 'classroom_3.glb');
+    //       kitchenColor.forEach(m => {
+    //         m.setAttribute('src', 'kitchen_s3.glb');
+    //       });
+    //     });
+    //   }
+    // });
 
     // クリックで次の画像に進む
     // introImage.addEventListener('click', () => {
