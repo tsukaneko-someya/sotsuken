@@ -26,4 +26,6 @@ sotsuken_test.html
 
 10/12 URLを取得できたので次回VRゴーグルでみられると思う。URL取得のため、sotsuken.htmlからindex.htmlに名前を変更。素材等を卒業研究フォルダではなく直に配置。
 
+10/16 index.htmlを更新。VR上でボタンが押せるように調整。
+
 URL：https://tsukaneko-someya.github.io/sotsuken/
