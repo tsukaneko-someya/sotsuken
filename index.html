@@ -31,11 +31,11 @@
     <!-- 教室 -->
     <a-gltf-model class="classroom" src="classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
     <!-- 肉 -->
-    <a-gltf-model id="niku_0" src="yakiniku_00.glb" position="0 0 -4" rotation="0 90 0">
+    <a-gltf-model id="niku_0" src="yakiniku/yakiniku_00.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
-    <a-gltf-model id="niku_1" src="yakiniku_01.glb" position="0 0 -4" rotation="0 90 0">
+    <a-gltf-model id="niku_1" src="yakiniku/yakiniku_01.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
-    <a-gltf-model id="niku_2" src="yakiniku_02.glb" position="0 0.0001 -4" rotation="0 90 0">
+    <a-gltf-model id="niku_2" src="yakiniku/yakiniku_02.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
     <!-- はし -->
     <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
@@ -46,7 +46,7 @@
     <!-- <a-entity id="introText" troika-text="value: ;" position="0 1.5 -0.99"></a-entity> -->
 
     <!-- 画像を3枚用意して切り替える -->
-    <a-image id="introImage" src="1.jpeg" position="0 1.5 -1" width="2.3" height="1.6"></a-image>
+    <a-image id="introImage" src="1.jpeg" position="0 1.5 -3" width="2.3" height="1.6"></a-image>
 
 
     <!-- ctrl+Alt+iでテストモード -->
@@ -58,12 +58,12 @@
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-plane yaku class="btn" position="0.7 -0.3 -0.7" height="0.15" width="0.3"></a-plane>
+        <a-plane yaku class="btn" position="0.7 -0.3 -3" height="0.15" width="0.3"></a-plane>
         <!-- 色変更 -->
-        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb" class="btn" position="0.8 0.4 -0.7" height="0.2" width="0.2" color="#ff0000"></a-plane>
-        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb" class="btn" position="0.6 0.4 -0.7" height="0.2" width="0.2" color="#00ff00"></a-plane>
-        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb" class="btn" position="0.4 0.4 -0.7" height="0.2" width="0.2" color="#0000ff"></a-plane>
-        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb" class="btn" position="0.2 0.4 -0.7" height="0.2" width="0.2" color="#ffff00"></a-plane>
+        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00.glb; niku_1: yakiniku_01.glb; niku_2: yakiniku_02.glb" class="btn" position="0.8 0.4 -3" height="0.2" width="0.2" color="#ff0000"></a-plane>
+        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_1.glb; niku_1: yakiniku_01_1.glb; niku_2: yakiniku_02_1.glb" class="btn" position="0.6 0.4 -3" height="0.2" width="0.2" color="#00ff00"></a-plane>
+        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_2.glb; niku_1: yakiniku_01_2.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.4 0.4 -3" height="0.2" width="0.2" color="#0000ff"></a-plane>
+        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_3.glb; niku_1: yakiniku_01_3.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.2 0.4 -3" height="0.2" width="0.2" color="#ffff00"></a-plane>
         <!-- <a-cursor></a-cursor> -->
 
         <a-entity id="ctlR" laser-controls="hand: right" raycaster="lineColor: red;"></a-entity>
@@ -81,7 +81,6 @@
     let meshes1 = [];
     let meshes2 = [];
     const nikuImg = document.getElementById('introImage');
-    const niku_0 = document.getElementById("niku_0");
     let running = false;
     const roomColor = document.querySelector('.classroom');
     const kitchenColor = document.querySelectorAll('.kitchen');
@@ -114,7 +113,7 @@
           node.material.opacity = 1.0;   // 透明度を設定
           meshes0.push(node)
           node.renderOrder = 2;
-          console.log(meshes0);
+          // console.log(meshes0);
         }
       });
     });
@@ -126,7 +125,7 @@
           node.material.opacity = 1.0;   // 透明度を設定
           meshes1.push(node)
           node.renderOrder = 1;
-          console.log(meshes1);
+          // console.log(meshes1);
         }
       });
     });
@@ -138,7 +137,7 @@
           node.material.opacity = 0.0;   // 透明度を設定
           meshes2.push(node)
           node.renderOrder = 3;
-          console.log(meshes2);
+          // console.log(meshes2);
         }
       });
     });
@@ -199,13 +198,19 @@
     AFRAME.registerComponent("change-view", {
       schema: {
         room: { type: "string" },
-        kitchen: { type: "string" }
+        kitchen: { type: "string" },
+        niku_0: { type: "string" },
+        niku_1: { type: "string" },
+        niku_2: { type: "string" }
       },
 
       init: function () {
         const el = this.el;
         const room = document.querySelector(".classroom");
         const kitchens = document.querySelectorAll(".kitchen");
+        const niku_0 = document.getElementById("niku_0");
+        const niku_1 = document.getElementById("niku_1");
+        const niku_2 = document.getElementById("niku_2");
         let isHovering = false;
 
         ctlR.addEventListener("raycaster-intersection", (e) => {
@@ -220,94 +225,14 @@
           if (!isHovering) return;
           room.setAttribute("src", this.data.room);
           kitchens.forEach(k => k.setAttribute("src", this.data.kitchen));
+          niku_0.setAttribute("src", "yakiniku/" + this.data.niku_0);
+          niku_1.setAttribute("src", "yakiniku/" + this.data.niku_1);
+          niku_2.setAttribute("src", "yakiniku/" + this.data.niku_2);
+
         });
       }
     });
 
-
-
-    // AFRAME.registerComponent("view-c", {
-    //   init: function () {
-    //     let intersecting_c = false; // レイが当たっているかどうか
-
-    //     // レイが当たった時
-    //     ctlR.addEventListener("raycaster-intersection", (e) => {
-    //       intersecting_c = true;
-    //     });
-
-    //     // レイが外れた時
-    //     ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
-    //       intersecting_c = false;
-    //     });
-
-    //     // トリガーを離した時に切り替え
-    //     ctlR.addEventListener("triggerup", (e) => {
-    //       if (intersecting_c) {
-    //         roomColor.setAttribute('src', 'classroom.glb');
-    //         kitchenColor.forEach(m => {
-    //           m.setAttribute('src', 'kitchen_s.glb');
-    //         });
-    //       }
-    //     });
-    //     this.el.addEventListener("click", function (e) {
-    //       roomColor.setAttribute('src', 'classroom.glb');
-    //       kitchenColor.forEach(m => {
-    //         m.setAttribute('src', 'kitchen_s.glb');
-    //       });
-    //     });
-    //   }
-    // });
-    // AFRAME.registerComponent("view-p", {
-    //   init: function () {
-    //     let intersecting_p = false; // レイが当たっているかどうか
-
-    //     // レイが当たった時
-    //     ctlR.addEventListener("raycaster-intersection", (e) => {
-    //       intersecting_p = true;
-    //     });
-
-    //     // レイが外れた時
-    //     ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
-    //       intersecting_p = false;
-    //     });
-
-    //     // トリガーを離した時に切り替え
-    //     ctlR.addEventListener("triggerup", (e) => {
-    //       if (intersecting_p) {
-    //         roomColor.setAttribute('src', 'classroom_1.glb');
-    //         kitchenColor.forEach(m => {
-    //           m.setAttribute('src', 'kitchen_s1.glb');
-    //         });
-    //       }
-    //     });
-    //     this.el.addEventListener("click", function (e) {
-    //       roomColor.setAttribute('src', 'classroom_1.glb');
-    //       kitchenColor.forEach(m => {
-    //         m.setAttribute('src', 'kitchen_s1.glb');
-    //       });
-    //     });
-    //   }
-    // });
-    // AFRAME.registerComponent("view-d", {
-    //   init: function () {
-    //     this.el.addEventListener("click", function (e) {
-    //       roomColor.setAttribute('src', 'classroom_2.glb');
-    //       kitchenColor.forEach(m => {
-    //         m.setAttribute('src', 'kitchen_s2.glb');
-    //       });
-    //     });
-    //   }
-    // });
-    // AFRAME.registerComponent("view-t", {
-    //   init: function () {
-    //     this.el.addEventListener("click", function (e) {
-    //       roomColor.setAttribute('src', 'classroom_3.glb');
-    //       kitchenColor.forEach(m => {
-    //         m.setAttribute('src', 'kitchen_s3.glb');
-    //       });
-    //     });
-    //   }
-    // });
 
     // クリックで次の画像に進む
     // introImage.addEventListener('click', () => {
