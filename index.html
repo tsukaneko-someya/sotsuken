@@ -58,15 +58,15 @@
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-plane yaku class="btn" position="0.7 -0.3 -3" height="0.15" width="0.3"></a-plane>
+        <a-plane yaku class="btn" position="0.5 -0.3 -2" height="0.15" width="0.3"></a-plane>
         <!-- 色変更 -->
-        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00.glb; niku_1: yakiniku_01.glb; niku_2: yakiniku_02.glb" class="btn" position="0.8 0.4 -3" height="0.2" width="0.2" color="#ff0000"></a-plane>
-        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_1.glb; niku_1: yakiniku_01_1.glb; niku_2: yakiniku_02_1.glb" class="btn" position="0.6 0.4 -3" height="0.2" width="0.2" color="#00ff00"></a-plane>
-        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_2.glb; niku_1: yakiniku_01_2.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.4 0.4 -3" height="0.2" width="0.2" color="#0000ff"></a-plane>
-        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_3.glb; niku_1: yakiniku_01_3.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.2 0.4 -3" height="0.2" width="0.2" color="#ffff00"></a-plane>
-        <!-- <a-cursor></a-cursor> -->
+        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00.glb; niku_1: yakiniku_01.glb; niku_2: yakiniku_02.glb" class="btn" position="0.6 0.4 -2" height="0.2" width="0.2" color="#ff0000"></a-plane>
+        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_1.glb; niku_1: yakiniku_01_1.glb; niku_2: yakiniku_02_1.glb" class="btn" position="0.4 0.4 -2" height="0.2" width="0.2" color="#00ff00"></a-plane>
+        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_2.glb; niku_1: yakiniku_01_2.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.2 0.4 -2" height="0.2" width="0.2" color="#0000ff"></a-plane>
+        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_3.glb; niku_1: yakiniku_01_3.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0 0.4 -2" height="0.2" width="0.2" color="#ffff00"></a-plane>
+        <a-cursor></a-cursor>
 
-        <a-entity id="ctlR" laser-controls="hand: right" raycaster="lineColor: red;"></a-entity>
+        <a-entity id="ctlR" laser-controls="hand: right" raycaster="lineColor: red; objects: .collidable"></a-entity>
         <a-entity id="ctlL" laser-controls="hand: left" raycaster="showLine: false;"></a-entity>
         <a-entity cursor="rayOrigin: mouse"></a-entity>
       </a-camera>
