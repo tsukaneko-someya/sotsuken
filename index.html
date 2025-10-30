@@ -14,7 +14,7 @@
   <a-scene vr-mode-ui="enabled: false">
     <!-- position:左右 上下 手前奥 -->
     <!-- 背景 -->
-    <a-sky color="#9ff"></a-sky>
+    <a-sky color="#C0E5F0"></a-sky>
     <!-- フライパン -->
     <a-gltf-model src="frying_pan.glb" position="-0.18 0.69 -0.19" rotation="0 90 0"></a-gltf-model>
     <!-- 調理台 -->
@@ -31,11 +31,11 @@
     <!-- 教室 -->
     <a-gltf-model class="classroom" src="classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
     <!-- 肉 -->
-    <a-gltf-model id="niku_0" src="yakiniku/yakiniku_00.glb" position="0.05 0 -4.04" rotation="0 90 0">
+    <a-gltf-model id="niku_0" src="yakiniku/yakiniku_00_c.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
-    <a-gltf-model id="niku_1" src="yakiniku/yakiniku_01.glb" position="0.05 0 -4.04" rotation="0 90 0">
+    <a-gltf-model id="niku_1" src="yakiniku/yakiniku_01_c.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
-    <a-gltf-model id="niku_2" src="yakiniku/yakiniku_02.glb" position="0.05 0 -4.04" rotation="0 90 0">
+    <a-gltf-model id="niku_2" src="yakiniku/yakiniku_02_c.glb" position="0.05 0.00005 -4.04" rotation="0 90 0">
     </a-gltf-model>
     <!-- はし -->
     <a-gltf-model src="simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
@@ -53,20 +53,27 @@
 
     <!-- カメラ -->
     <a-entity position="0 0 0" rotation="0 0 0">
-
-
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-plane yaku class="btn" position="0.5 -0.3 -2" height="0.15" width="0.3"></a-plane>
+        <a-plane yaku class="collidable" position="0.5 -0.3 -1.5" height="0.15" width="0.3"></a-plane>
         <!-- 色変更 -->
-        <a-plane change-view="room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00.glb; niku_1: yakiniku_01.glb; niku_2: yakiniku_02.glb" class="btn" position="0.6 0 -1.5" height="0.2" width="0.2" color="#ff0000"></a-plane>
-        <a-plane change-view="room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_1.glb; niku_1: yakiniku_01_1.glb; niku_2: yakiniku_02_1.glb" class="btn" position="0.4 0 -1.5" height="0.2" width="0.2" color="#00ff00"></a-plane>
-        <a-plane change-view="room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_2.glb; niku_1: yakiniku_01_2.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0.2 0 -1.5" height="0.2" width="0.2" color="#0000ff"></a-plane>
-        <a-plane change-view="room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_3.glb; niku_1: yakiniku_01_3.glb; niku_2: yakiniku_02_3.glb" class="btn" position="0 0 -1.5" height="0.2" width="0.2" color="#ffff00"></a-plane>
+        <a-plane
+          change-view="sky: #C0E5F0; room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
+          class="collidable" position="0 0 -1.5" height="0.2" width="0.2" color="#ffff00"></a-plane>
+        <a-plane
+          change-view="sky: #DDE2F1; room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
+          class="collidable" position="0.2 0 -1.5" height="0.2" width="0.2" color="#0000ff"></a-plane>
+        <a-plane
+          change-view="sky: #D6DCF0; room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
+          class="collidable" position="0.4 0 -1.5" height="0.2" width="0.2" color="#00ff00"></a-plane>
+        <a-plane
+          change-view="sky: #B2E9E8; room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
+          class="collidable" position="0.6 0 -1.5" height="0.2" width="0.2" color="#ff0000"></a-plane>
         <!-- <a-cursor></a-cursor> -->
 
-        <a-entity id="ctlR" laser-controls="hand: right" raycaster="far: 20; interval: 1000; lineColor: red; objects: .collidable"></a-entity>
+        <a-entity id="ctlR" laser-controls="hand: right"
+          raycaster="far: 20; interval: 1000; lineColor: red; objects: .collidable" position="0 1 0"></a-entity>
         <a-entity id="ctlL" laser-controls="hand: left" raycaster="showLine: false;"></a-entity>
         <a-entity cursor="rayOrigin: mouse"></a-entity>
       </a-camera>
@@ -92,6 +99,10 @@
     const introImage = document.getElementById('introImage');
     const imageList = ["1.jpeg", "2.jpeg", "3.jpeg"];
     let fadingOut = true;
+    let opacity_0 = 1.0;
+    let opacity_1 = 1.0;
+    let opacity_2 = 0.0;
+    let vol = 0;
 
     // 表示する文字
     // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
@@ -100,7 +111,7 @@
 
 
     // 調理室の表示
-    document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
+    document.querySelectorAll('a-gltf-model, .collidable').forEach(m => {
       m.setAttribute('visible', 'false');
     });
 
@@ -109,8 +120,10 @@
       const model = e.detail.model; // three.js の Object3D
       model.traverse((node) => {
         if (node.isMesh) {
-          node.material.transparent = true;  // 半透明にするために必要
-          node.material.opacity = 1.0;   // 透明度を設定
+          node.material.transparent = true;
+          node.material.opacity = opacity_0;
+          // 半透明にするために必要
+          // 透明度を設定
           meshes0.push(node)
           node.renderOrder = 2;
           // console.log(meshes0);
@@ -122,7 +135,7 @@
       model.traverse((node) => {
         if (node.isMesh) {
           node.material.transparent = true;  // 半透明にするために必要
-          node.material.opacity = 1.0;   // 透明度を設定
+          node.material.opacity = opacity_1;   // 透明度を設定
           meshes1.push(node)
           node.renderOrder = 1;
           // console.log(meshes1);
@@ -134,7 +147,7 @@
       model.traverse((node) => {
         if (node.isMesh) {
           node.material.transparent = true;  // 半透明にするために必要
-          node.material.opacity = 0.0;   // 透明度を設定
+          node.material.opacity = opacity_2;   // 透明度を設定
           meshes2.push(node)
           node.renderOrder = 3;
           // console.log(meshes2);
@@ -151,6 +164,7 @@
 
         ctlR.addEventListener("raycaster-intersection", (e) => {
           if (e.detail.els.includes(el)) isHovering = true; //対象のボタンがレイにあたっているか
+          console.log(isHovering)
         });
 
         ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
@@ -164,17 +178,41 @@
           }
         });
 
-
+        const bgm = new Audio('pan_fry_steak3.mp3');
         // 焼きループ（常に実行、runningがtrueの時だけ処理）
         setInterval(() => {
-          if (!running) return;
+          bgm.volume = vol;
+          console.log(vol);
+          if (!running) {
+            if (vol <= 0.1) {
+              vol = 0;
+              bgm.pause();
+            } else {
+              vol -= 0.05;
+            }
+            return;
+          }
+          // 音を鳴らす
+          // 音源：https://taira-komori.net/cooking01.html
+
+          if (vol >= 0.9) {
+            vol = 1;
+          } else {
+            vol += 0.05;
+          }
+          bgm.play();
+          bgm.loop = true;
           if (fadingOut) {
+
+
             // mesh0 をフェードアウト
             let allZero = true;
             meshes0.forEach(mesh0 => {
               mesh0.material.opacity -= 0.05;
               if (mesh0.material.opacity < 0) mesh0.material.opacity = 0;
               if (mesh0.material.opacity > 0) allZero = false;
+              opacity_0 = mesh0.material.opacity;
+              // console.log(opacity_0)
             });
 
             // 全部0になったら次へ
@@ -185,7 +223,10 @@
             meshes2.forEach(mesh2 => {
               mesh2.material.opacity += 0.05;
               if (mesh2.material.opacity > 1) mesh2.material.opacity = 1;
+              opacity_2 = mesh2.material.opacity;
             });
+
+
           }
         }, 100);
       }
@@ -197,6 +238,7 @@
     // クリックイベント(色)
     AFRAME.registerComponent("change-view", {
       schema: {
+        sky: { type: "string" },
         room: { type: "string" },
         kitchen: { type: "string" },
         niku_0: { type: "string" },
@@ -206,6 +248,7 @@
 
       init: function () {
         const el = this.el;
+        const sky = document.querySelector("a-sky");
         const room = document.querySelector(".classroom");
         const kitchens = document.querySelectorAll(".kitchen");
         const niku_0 = document.getElementById("niku_0");
@@ -223,6 +266,7 @@
 
         ctlR.addEventListener("triggerup", () => {
           if (!isHovering) return;
+          sky.setAttribute("color", this.data.sky);
           room.setAttribute("src", this.data.room);
           kitchens.forEach(k => k.setAttribute("src", this.data.kitchen));
           niku_0.setAttribute("src", "yakiniku/" + this.data.niku_0);
@@ -242,7 +286,7 @@
     //   } else {
     //     // 最後の画像のあとで画像を非表示にして3Dモデルを表示
     //     introImage.setAttribute('visible', 'false');
-    //     document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
+    //     document.querySelectorAll('a-gltf-model, .collidable').forEach(m => {
     //       m.setAttribute('visible', 'true');
     //     });
     //   }
@@ -254,11 +298,20 @@
       } else {
         // 最後の画像のあとで画像を非表示にして3Dモデルを表示
         introImage.setAttribute('visible', 'false');
-        document.querySelectorAll('a-gltf-model, .btn').forEach(m => {
+        document.querySelectorAll('a-gltf-model, .collidable').forEach(m => {
           m.setAttribute('visible', 'true');
-          console.log()
         });
       }
+    });
+
+    // gripを押すとUI非表示
+    let uiVisible = true;
+    ctlL.addEventListener('gripup', () => {
+      uiVisible = !uiVisible;
+      document.querySelectorAll('.collidable').forEach(m => {
+        m.setAttribute('visible', uiVisible);
+        console.log(uiVisible)
+      });
     });
 
 
@@ -267,6 +320,4 @@
   </script>
 </body>
 
-
 </html>
-
