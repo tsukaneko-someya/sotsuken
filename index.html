@@ -56,20 +56,20 @@
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-plane yaku class="collidable" position="0.5 -0.3 -1.5" height="0.15" width="0.3"></a-plane>
+        <a-image yaku src="button/yaku_1.jpeg" class="collidable yaku_btn" position="0.5 -0.3 -1.5" height="0.15" width="0.3"></a-image>
         <!-- 色変更 -->
-        <a-plane
-          change-view="sky: #C0E5F0; room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
-          class="collidable" position="0 0 -1.5" height="0.2" width="0.2" color="#ffff00"></a-plane>
-        <a-plane
-          change-view="sky: #DDE2F1; room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
-          class="collidable" position="0.2 0 -1.5" height="0.2" width="0.2" color="#0000ff"></a-plane>
-        <a-plane
-          change-view="sky: #D6DCF0; room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
-          class="collidable" position="0.4 0 -1.5" height="0.2" width="0.2" color="#00ff00"></a-plane>
-        <a-plane
-          change-view="sky: #B2E9E8; room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
-          class="collidable" position="0.6 0 -1.5" height="0.2" width="0.2" color="#ff0000"></a-plane>
+        <a-image
+        src="button/1pan_1.jpeg" change-view="sky: #C0E5F0; room: classroom.glb; kitchen: kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
+          class="collidable" position="0 0 -1.5" height="0.2" width="0.2"></a-image>
+        <a-image
+        src="button/1gata_1.jpeg" change-view="sky: #DDE2F1; room: classroom_1.glb; kitchen: kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
+          class="collidable" position="0.2 0 -1.5" height="0.2" width="0.2"></a-image>
+        <a-image
+        src="button/2gata_1.jpeg" change-view="sky: #D6DCF0; room: classroom_2.glb; kitchen: kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
+          class="collidable" position="0.4 0 -1.5" height="0.2" width="0.2"></a-image>
+        <a-image
+        src="button/3gata_1.jpeg" change-view="sky: #B2E9E8; room: classroom_3.glb; kitchen: kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
+          class="collidable" position="0.6 0 -1.5" height="0.2" width="0.2"></a-image>
         <!-- <a-cursor></a-cursor> -->
 
         <a-entity id="ctlR" laser-controls="hand: right"
@@ -158,22 +158,25 @@
     // クリックイベント(焼肉)
     AFRAME.registerComponent("yaku", {
       init: function () {
-        let isHovering = false; // レイが当たっているかどうか
+        let isHoveringYaku = false; // レイが当たっているかどうか
         let running = false;      // 焼いている状態かどうか（ON/OFF）
         const el = this.el;
+        const yakuBtn = document.querySelector(".yaku_btn");
 
         ctlR.addEventListener("raycaster-intersection", (e) => {
-          if (e.detail.els.includes(el)) isHovering = true; //対象のボタンがレイにあたっているか
-          console.log(isHovering)
+          if (e.detail.els.includes(el)) isHoveringYaku = true; //対象のボタンがレイにあたっているか 
+          yakuBtn.setAttribute("src", "button/yaku_2.jpeg");
+          console.log(e.detail)
         });
 
         ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
-          if (e.detail.clearedEls.includes(el)) isHovering = false; //対象のボタンからレイが外れているか
+          if (e.detail.clearedEls.includes(el)) isHoveringYaku = false; //対象のボタンからレイが外れているか
+          yakuBtn.setAttribute("src", "button/yaku_1.jpeg");
         });
 
         // トリガーを離した時に切り替え
         ctlR.addEventListener("triggerup", (e) => {
-          if (isHovering) {
+          if (isHoveringYaku) {
             running = !running;
           }
         });
