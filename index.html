@@ -41,12 +41,9 @@
     <a-gltf-model src="3Dmodel/simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
     </a-gltf-model>
 
-    <!-- <a-plane id="textBg" position="0 1.5 -1" color="#fff" opacity="0.7" height="1.5" width="3" rotation="0 0 0"> -->
-    <!-- </a-plane> -->
-    <!-- <a-entity id="introText" troika-text="value: ;" position="0 1.5 -0.99"></a-entity> -->
-
     <!-- 画像を3枚用意して切り替える -->
     <a-image id="introImage" src="1.jpeg" position="0 1.5 -3" width="2.3" height="1.6"></a-image>
+    <a-image id="introSousa" src="sousa_0.png" position="0 0.7 -3" width="2.3" height="0.5"></a-image>
 
 
     <!-- ctrl+Alt+iでテストモード -->
@@ -56,21 +53,24 @@
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-image src="button/yaku_1.jpeg" change-view="hover: button/yaku_2.jpeg; clearedHover: button/yaku_1.jpeg;"
-          change-view class="collidable" data-type="yaku_btn" position="0.5 -0.3 -1.5" height="0.15" width="0.3">
+        <a-image src="button/yaku_1.jpeg" btn="hover: button/yaku_2.jpeg; clearedHover: button/yaku_1.jpeg;" btn
+          class="collidable" data-type="yaku_btn" position="0.1 -0.3 -1.5" height="0.15" width="0.3">
+        </a-image>
+        <a-image src="button/reset_1.png" btn="hover: button/reset_2.png; clearedHover: button/reset_1.png;" btn
+          class="collidable" data-type="reset_btn" position="0.5 -0.3 -1.5" height="0.15" width="0.3">
         </a-image>
         <!-- 色変更 -->
         <a-image src="button/1pan_1.jpeg"
-          change-view="hover: button/1pan_2.jpeg; clearedHover: button/1pan_1.jpeg; sky: #C0E5F0; room: 3Dmodel/classroom.glb; kitchen: 3Dmodel/kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
+          btn="hover: button/1pan_2.jpeg; clearedHover: button/1pan_1.jpeg; sky: #C0E5F0; room: 3Dmodel/classroom.glb; kitchen: 3Dmodel/kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
           class="collidable" data-type="color_btn" position="0 0 -1.5" height="0.2" width="0.2"></a-image>
         <a-image src="button/1gata_1.jpeg"
-          change-view="hover: button/1gata_2.jpeg; clearedHover: button/1gata_1.jpeg; sky: #DDE2F1; room: 3Dmodel/classroom_1.glb; kitchen: 3Dmodel/kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
+          btn="hover: button/1gata_2.jpeg; clearedHover: button/1gata_1.jpeg; sky: #DDE2F1; room: 3Dmodel/classroom_1.glb; kitchen: 3Dmodel/kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
           class="collidable" data-type="color_btn" position="0.2 0 -1.5" height="0.2" width="0.2"></a-image>
         <a-image src="button/2gata_1.jpeg"
-          change-view="hover: button/2gata_2.jpeg; clearedHover: button/2gata_1.jpeg; sky: #D6DCF0; room: 3Dmodel/classroom_2.glb; kitchen: 3Dmodel/kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
+          btn="hover: button/2gata_2.jpeg; clearedHover: button/2gata_1.jpeg; sky: #D6DCF0; room: 3Dmodel/classroom_2.glb; kitchen: 3Dmodel/kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
           class="collidable" data-type="color_btn" position="0.4 0 -1.5" height="0.2" width="0.2"></a-image>
         <a-image src="button/3gata_1.jpeg"
-          change-view="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
+          btn="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
           class="collidable" data-type="color_btn" position="0.6 0 -1.5" height="0.2" width="0.2"></a-image>
         <!-- <a-cursor></a-cursor> -->
 
@@ -84,6 +84,8 @@
 
   <script>
     // 変数
+    const aGltfModel = document.querySelectorAll('a-gltf-model');
+    const collidable = document.querySelectorAll('.collidable');
     let ctlR = document.querySelector('#ctlR');
     let ctlL = document.querySelector('#ctlL');
     let meshes0 = [];
@@ -95,12 +97,14 @@
     const kitchenColor = document.querySelectorAll('.kitchen');
     let imageNumber = 0;
     const introImage = document.getElementById('introImage');
-    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg"];
+    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg", "sousa_1.png", "sousa_2.png"];
+    const introSousa = document.getElementById('introSousa');
     let fadingOut = true;
     let opacity_0 = 1.0;
     let opacity_1 = 1.0;
     let opacity_2 = 0.0;
     let vol = 0;
+    let uiVisible = true;
 
     // 表示する文字
     // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
@@ -109,9 +113,39 @@
 
 
     // 調理室の表示
-    document.querySelectorAll('a-gltf-model, .collidable').forEach(m => {
+    aGltfModel.forEach(m => {
       m.setAttribute('visible', 'false');
     });
+    collidable.forEach(m => {
+      m.setAttribute('visible', 'false');
+    });
+
+    // 説明パート
+    if (introImage.getAttribute('visible')) {
+      ctlR.addEventListener('triggerup', () => {
+        if (imageNumber < imageList.length) {
+          imageNumber++;
+          introImage.setAttribute('src', imageList[imageNumber]);
+        }
+        if (imageNumber > 2 && imageNumber < imageList.length) {
+          aGltfModel.forEach(m => {
+            m.setAttribute('visible', 'true');
+            introSousa.setAttribute('visible', 'false');
+          });
+        } else if (imageNumber >= imageList.length) {
+          collidable.forEach(m => {
+            m.setAttribute('visible', 'true');
+          })
+          introImage.setAttribute('visible', 'false');
+        }
+      });
+      ctlL.addEventListener('triggerup', () => {
+        if (imageNumber > 0) {
+          imageNumber--;
+          introImage.setAttribute('src', imageList[imageNumber]);
+        }
+      });
+    }
 
     // 肉の初期設定
     niku_0.addEventListener('model-loaded', (e) => {
@@ -154,7 +188,7 @@
     });
 
     // クリックイベント
-    AFRAME.registerComponent("change-view", {
+    AFRAME.registerComponent("btn", {
       schema: {
         hover: { type: "string" },
         clearedHover: { type: "string" },
@@ -184,7 +218,6 @@
             el.setAttribute("src", this.data.hover);
             console.log(e.detail.els)
           }
-
         });
 
         ctlR.addEventListener("raycaster-intersection-cleared", (e) => {
@@ -196,9 +229,9 @@
 
         // type取得
         const type = el.dataset.type;
-
         if (type === "yaku_btn") {  // 焼くボタンが押された時の処理
           ctlR.addEventListener("triggerup", (e) => {
+            if (!uiVisible) return; // 表示されないときは処理しない
             if (isHovering) {
               running = !running;
             }
@@ -209,7 +242,7 @@
           // 焼きループ（常に実行、runningがtrueの時だけ処理）
           setInterval(() => {
             bgm.volume = vol;
-            console.log(vol);
+            // console.log(vol);
             if (!running) {
               if (vol <= 0.1) {
                 vol = 0;
@@ -253,8 +286,26 @@
               });
             }
           }, 100);
+        } else if (type === "reset_btn") {
+          ctlR.addEventListener("triggerup", (e) => {
+            if (!uiVisible) return;  // 表示されないときは処理しない
+            if (!isHovering) return; // レイが当たっていない場合は処理しない
+            meshes0.forEach(mesh0 => {
+              mesh0.material.opacity = 1.0;
+            });
+            opacity_0 = 1.0;
+
+            meshes2.forEach(mesh2 => {
+              mesh2.material.opacity = 0.0;
+            });
+            opacity_2 = 0.0;
+
+            fadingOut = true;
+            vol = 0;
+          });
         } else {  // 他のボタンが押されたときの処理
           ctlR.addEventListener("triggerup", () => {
+            if (!uiVisible) return; // 表示されないときは処理しない
             if (!isHovering) return;
             sky.setAttribute("color", this.data.sky);
             room.setAttribute("src", this.data.room);
@@ -267,21 +318,8 @@
       }
     });
 
-    ctlL.addEventListener('triggerup', () => {
-      if (imageNumber < imageList.length - 1) {
-        imageNumber++;
-        introImage.setAttribute('src', imageList[imageNumber]);
-      } else {
-        // 最後の画像のあとで画像を非表示にして3Dモデルを表示
-        introImage.setAttribute('visible', 'false');
-        document.querySelectorAll('a-gltf-model, .collidable').forEach(m => {
-          m.setAttribute('visible', 'true');
-        });
-      }
-    });
 
     // gripを押すとUI非表示
-    let uiVisible = true;
     ctlL.addEventListener('gripup', () => {
       uiVisible = !uiVisible;
       document.querySelectorAll('.collidable').forEach(m => {
