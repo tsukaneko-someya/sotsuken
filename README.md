@@ -29,3 +29,5 @@ sotsuken_test.html
 10/16 index.htmlを更新。VR上でボタンが押せるように調整。
 
 URL：https://tsukaneko-someya.github.io/sotsuken/
+
+アンケート；https://docs.google.com/forms/d/1zNoF2NJqKZcDQoM5F7f-sW1pvTvPUrTlaqCBaSbHHJg/edit
