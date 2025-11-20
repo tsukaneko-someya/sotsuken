@@ -73,6 +73,8 @@
           btn="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
           class="collidable" data-type="color_btn" position="0.6 0 -1.5" height="0.2" width="0.2"></a-image>
         <!-- <a-cursor></a-cursor> -->
+        <!-- お手本表示 -->
+        <a-image src="sample.png" id="sample" position="-0.8 -0.1 -1.5" height="0.6" width="0.9"></a-image>
 
         <a-entity id="ctlR" laser-controls="hand: right"
           raycaster="far: 20; interval: 1000; lineColor: red; objects: .collidable" position="0 1 0"></a-entity>
@@ -86,6 +88,7 @@
     // 変数
     const aGltfModel = document.querySelectorAll('a-gltf-model');
     const collidable = document.querySelectorAll('.collidable');
+    const sample = document.getElementById('sample');
     let ctlR = document.querySelector('#ctlR');
     let ctlL = document.querySelector('#ctlL');
     let meshes0 = [];
@@ -97,7 +100,7 @@
     const kitchenColor = document.querySelectorAll('.kitchen');
     let imageNumber = 0;
     const introImage = document.getElementById('introImage');
-    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "sousa_1.png", "sousa_2.png"];
+    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "sousa_1.png", "sousa_2.png", "sousa_3.png", "sousa_4.png"];
     const introSousa = document.getElementById('introSousa');
     let fadingOut = true;
     let opacity_0 = 1.0;
@@ -105,6 +108,7 @@
     let opacity_2 = 0.0;
     let vol = 0;
     let uiVisible = true;
+    let sampleVisible = false;
 
     // 表示する文字
     // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
@@ -119,6 +123,7 @@
     collidable.forEach(m => {
       m.setAttribute('visible', 'false');
     });
+    sample.setAttribute('visible', 'false');
 
     // 説明パート
     if (introImage.getAttribute('visible')) {
@@ -127,7 +132,7 @@
           imageNumber++;
           introImage.setAttribute('src', imageList[imageNumber]);
         }
-        if (imageNumber > 2 && imageNumber < imageList.length) {
+        if (imageNumber == 5) {
           aGltfModel.forEach(m => {
             m.setAttribute('visible', 'true');
             introSousa.setAttribute('visible', 'false');
@@ -137,6 +142,20 @@
             m.setAttribute('visible', 'true');
           })
           introImage.setAttribute('visible', 'false');
+
+          // 右gripを押すとUI非表示
+          ctlR.addEventListener('gripup', () => {
+            uiVisible = !uiVisible;
+            collidable.forEach(m => {
+              m.setAttribute('visible', uiVisible);
+            });
+          });
+          // 左gripを押すとお手本表示
+          ctlL.addEventListener('gripup', () => {
+            sampleVisible = !sampleVisible;
+            sample.setAttribute('visible', sampleVisible);
+            console.log(sampleVisible)
+          });
         }
       });
       ctlL.addEventListener('triggerup', () => {
@@ -319,14 +338,7 @@
     });
 
 
-    // gripを押すとUI非表示
-    ctlL.addEventListener('gripup', () => {
-      uiVisible = !uiVisible;
-      document.querySelectorAll('.collidable').forEach(m => {
-        m.setAttribute('visible', uiVisible);
-        console.log(uiVisible)
-      });
-    });
+
 
   </script>
 </body>
