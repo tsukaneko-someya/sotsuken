@@ -100,7 +100,7 @@
     const kitchenColor = document.querySelectorAll('.kitchen');
     let imageNumber = 0;
     const introImage = document.getElementById('introImage');
-    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "sousa_1.png", "sousa_2.png", "sousa_3.png", "sousa_4.png"];
+    const imageList = ["1.jpeg", "2.jpeg", "3.jpeg", "6.jpeg", "4.jpeg", "5.jpeg", "sousa_1.png", "sousa_2.png", "sousa_3.png", "sousa_4.png"];
     const introSousa = document.getElementById('introSousa');
     let fadingOut = true;
     let opacity_0 = 1.0;
@@ -126,45 +126,44 @@
     sample.setAttribute('visible', 'false');
 
     // 説明パート
-    if (introImage.getAttribute('visible')) {
-      ctlR.addEventListener('triggerup', () => {
-        if (imageNumber < imageList.length) {
-          imageNumber++;
-          introImage.setAttribute('src', imageList[imageNumber]);
-        }
-        if (imageNumber == 5) {
-          aGltfModel.forEach(m => {
-            m.setAttribute('visible', 'true');
-            introSousa.setAttribute('visible', 'false');
-          });
-        } else if (imageNumber >= imageList.length) {
-          collidable.forEach(m => {
-            m.setAttribute('visible', 'true');
-          })
-          introImage.setAttribute('visible', 'false');
+    ctlR.addEventListener('triggerup', () => {
+      if (imageNumber < imageList.length) {
+        imageNumber++;
+        introImage.setAttribute('src', imageList[imageNumber]);
+      }
+      if (imageNumber == 6) {
+        aGltfModel.forEach(m => {
+          m.setAttribute('visible', 'true');
+          introSousa.setAttribute('visible', 'false');
+        });
+      } else if (imageNumber >= imageList.length) {
+        collidable.forEach(m => {
+          m.setAttribute('visible', 'true');
+        })
+        introImage.setAttribute('visible', 'false');
 
-          // 右gripを押すとUI非表示
-          ctlR.addEventListener('gripup', () => {
-            uiVisible = !uiVisible;
-            collidable.forEach(m => {
-              m.setAttribute('visible', uiVisible);
-            });
+        // 右gripを押すとUI非表示
+        ctlR.addEventListener('gripup', () => {
+          uiVisible = !uiVisible;
+          collidable.forEach(m => {
+            m.setAttribute('visible', uiVisible);
           });
-          // 左gripを押すとお手本表示
-          ctlL.addEventListener('gripup', () => {
-            sampleVisible = !sampleVisible;
-            sample.setAttribute('visible', sampleVisible);
-            console.log(sampleVisible)
-          });
-        }
-      });
-      ctlL.addEventListener('triggerup', () => {
-        if (imageNumber > 0) {
-          imageNumber--;
-          introImage.setAttribute('src', imageList[imageNumber]);
-        }
-      });
-    }
+        });
+        // 左gripを押すとお手本表示
+        ctlL.addEventListener('gripup', () => {
+          sampleVisible = !sampleVisible;
+          sample.setAttribute('visible', sampleVisible);
+          console.log(sampleVisible)
+        });
+      }
+    });
+    ctlL.addEventListener('triggerup', () => {
+      if (imageNumber > 0) {
+        imageNumber--;
+        introImage.setAttribute('src', imageList[imageNumber]);
+      }
+    });
+
 
     // 肉の初期設定
     niku_0.addEventListener('model-loaded', (e) => {
