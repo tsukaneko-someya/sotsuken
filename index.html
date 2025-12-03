@@ -32,6 +32,7 @@
     <a-gltf-model class="kitchen" src="3Dmodel/kitchen_s.glb" position="-4 0.05 -7" rotation="0 90 0"></a-gltf-model>
     <!-- 教室 -->
     <a-gltf-model class="classroom" src="3Dmodel/classroom.glb" position="0 0 -2" rotation="0 90 0"></a-gltf-model>
+    <a-image id="blackboard" class="classimg" src="blackboard.png" position="-2.5 1.5 -10.5" scale="2 1 1"></a-image>
     <!-- 肉 -->
     <a-gltf-model id="niku_0" src="yakiniku/yakiniku_00_c.glb" position="0.05 0 -4.04" rotation="0 90 0">
     </a-gltf-model>
@@ -42,10 +43,14 @@
     <!-- はし -->
     <a-gltf-model src="3Dmodel/simple_chopsticks.glb" scale="0.1 0.1 0.1" position="0.1 0.63 -0.7" rotation="0 110 0">
     </a-gltf-model>
+    <!-- 操作説明（教室） -->
+    <a-image class="classimg" src="sousa_1.png" position="0.5 2.3 1.25" rotation="0 180 0" scale="1.5 1 1"></a-image>
+    <a-image class="classimg" src="sousa_2.png" position="-1.2 2.3 1.25" rotation="0 180 0" scale="1.5 1 1"></a-image>
+    <a-image class="classimg" src="sousa_3.png" position="0.5 1.1 1.25" rotation="0 180 0" scale="1.5 1 1"></a-image>
 
     <!-- 画像を3枚用意して切り替える -->
-    <a-image id="introImage" src="1.jpeg" position="0 1.5 -3" width="2.3" height="1.6"></a-image>
-    <a-image id="introSousa" src="sousa_0.png" position="0 0.7 -3" width="2.3" height="0.5"></a-image>
+    <a-image id="introImage" src="1.jpeg" position="0 1.8 -3" width="2.3" height="1.6"></a-image>
+    <a-image id="introSousa" src="sousa_0.png" position="0 1.0 -3" width="2.3" height="0.5"></a-image>
 
 
     <!-- ctrl+Alt+iでテストモード -->
@@ -63,16 +68,16 @@
         </a-image>
         <!-- 色変更 -->
         <a-image src="button/1pan_1.jpeg"
-          btn="hover: button/1pan_2.jpeg; clearedHover: button/1pan_1.jpeg; sky: #C0E5F0; room: 3Dmodel/classroom.glb; kitchen: 3Dmodel/kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
+          btn="hover: button/1pan_2.jpeg; clearedHover: button/1pan_1.jpeg; sky: #C0E5F0; room: 3Dmodel/classroom.glb; kitchen: 3Dmodel/kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb; blackboard: blackboard.png"
           class="collidable" data-type="color_btn" position="0 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/1gata_1.jpeg"
-          btn="hover: button/1gata_2.jpeg; clearedHover: button/1gata_1.jpeg; sky: #DDE2F1; room: 3Dmodel/classroom_1.glb; kitchen: 3Dmodel/kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
+          btn="hover: button/1gata_2.jpeg; clearedHover: button/1gata_1.jpeg; sky: #DDE2F1; room: 3Dmodel/classroom_1.glb; kitchen: 3Dmodel/kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb; blackboard: blackboard_p.png"
           class="collidable" data-type="color_btn" position="0.2 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/2gata_1.jpeg"
-          btn="hover: button/2gata_2.jpeg; clearedHover: button/2gata_1.jpeg; sky: #D6DCF0; room: 3Dmodel/classroom_2.glb; kitchen: 3Dmodel/kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
+          btn="hover: button/2gata_2.jpeg; clearedHover: button/2gata_1.jpeg; sky: #D6DCF0; room: 3Dmodel/classroom_2.glb; kitchen: 3Dmodel/kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb; blackboard: blackboard_d.png"
           class="collidable" data-type="color_btn" position="0.4 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/3gata_1.jpeg"
-          btn="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
+          btn="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb; blackboard: blackboard_t.png"
           class="collidable" data-type="color_btn" position="0.6 0 -1.3" height="0.2" width="0.2"></a-image>
         <!-- お手本表示 -->
         <a-image src="button/yaku_2.jpeg" btn="hover: button/yaku_1.jpeg; clearedHover: button/yaku_1.jpeg;" btn
@@ -92,6 +97,7 @@
   <script>
     // 変数
     const aGltfModel = document.querySelectorAll('a-gltf-model');
+    const classImg = document.querySelectorAll('.classimg');
     const collidable = document.querySelectorAll('.collidable');
     const sample = document.getElementById('sample');
     let ctlR = document.querySelector('#ctlR');
@@ -121,6 +127,9 @@
     aGltfModel.forEach(m => {
       m.setAttribute('visible', 'false');
     });
+    classImg.forEach(m => {
+      m.setAttribute('visible', 'false');
+    });
     collidable.forEach(m => {
       m.setAttribute('visible', 'false');
     });
@@ -135,12 +144,15 @@
       if (imageNumber == 6) {
         aGltfModel.forEach(m => {
           m.setAttribute('visible', 'true');
-          introSousa.setAttribute('visible', 'false');
         });
+        classImg.forEach(m => {
+          m.setAttribute('visible', 'true');
+        })
       } else if (imageNumber >= imageList.length) {
         collidable.forEach(m => {
           m.setAttribute('visible', 'true');
         })
+        introSousa.setAttribute('visible', 'false');
         introImage.setAttribute('visible', 'false');
       }
     });
@@ -202,7 +214,8 @@
         kitchen: { type: "string" },
         niku_0: { type: "string" },
         niku_1: { type: "string" },
-        niku_2: { type: "string" }
+        niku_2: { type: "string" },
+        blackboard: {type: "string"}
       },
 
       init: function () {
@@ -215,6 +228,7 @@
         const niku_0 = document.getElementById("niku_0");
         const niku_1 = document.getElementById("niku_1");
         const niku_2 = document.getElementById("niku_2");
+        const blackboard = document.getElementById("blackboard");
         let isHovering = false;
 
         ctlR.addEventListener("raycaster-intersection", (e) => {
@@ -281,7 +295,7 @@
               // mesh0 をフェードアウト
               let allZero = true;
               meshes0.forEach(mesh0 => {
-                mesh0.material.opacity -= 0.05;
+                mesh0.material.opacity -= 0.003;
                 if (mesh0.material.opacity < 0) mesh0.material.opacity = 0;
                 if (mesh0.material.opacity > 0) allZero = false;
                 opacity_0 = mesh0.material.opacity;
@@ -294,7 +308,7 @@
             } else {
               // mesh2 をフェードイン
               meshes2.forEach(mesh2 => {
-                mesh2.material.opacity += 0.05;
+                mesh2.material.opacity += 0.002;
                 if (mesh2.material.opacity > 1) mesh2.material.opacity = 1;
                 opacity_2 = mesh2.material.opacity;
               });
@@ -336,6 +350,7 @@
             niku_0.setAttribute("src", "yakiniku/" + this.data.niku_0);
             niku_1.setAttribute("src", "yakiniku/" + this.data.niku_1);
             niku_2.setAttribute("src", "yakiniku/" + this.data.niku_2);
+            blackboard.setAttribute("src", this.data.blackboard);
           });
         }
       }
