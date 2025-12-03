@@ -16,6 +16,8 @@
     <!-- 背景 -->
     <a-sky color="#C0E5F0"></a-sky>
     <!-- フライパン -->
+    <a-gltf-model id="frying_pan" src="3Dmodel/frying_pan.glb" btn class="collidable" data-type="yaku_btn"
+      position="-0.18 0.69 -0.19" rotation="0 90 0" visible="false"></a-gltf-model>
     <a-gltf-model src="3Dmodel/frying_pan.glb" position="-0.18 0.69 -0.19" rotation="0 90 0"></a-gltf-model>
     <!-- 調理台 -->
     <a-gltf-model class="kitchen" src="3Dmodel/kitchen_s.glb" position="0 0.05 -1" rotation="0 90 0"></a-gltf-model>
@@ -53,28 +55,31 @@
       <a-camera position="0 0 3">
         <!-- ボタン -->
         <!-- 焼肉用 -->
-        <a-image src="button/yaku_1.jpeg" btn="hover: button/yaku_2.jpeg; clearedHover: button/yaku_1.jpeg;" btn
-          class="collidable" data-type="yaku_btn" position="0.1 -0.3 -1.5" height="0.15" width="0.3">
-        </a-image>
+        <!-- <a-image src="button/yaku_1.jpeg" btn="hover: button/yaku_2.jpeg; clearedHover: button/yaku_1.jpeg;" btn
+          class="collidable" data-type="yaku_btn" position="0.1 -0.3 -1.3" height="0.15" width="0.3">
+        </a-image> -->
         <a-image src="button/reset_1.png" btn="hover: button/reset_2.png; clearedHover: button/reset_1.png;" btn
-          class="collidable" data-type="reset_btn" position="0.5 -0.3 -1.5" height="0.15" width="0.3">
+          class="collidable" data-type="reset_btn" position="0.5 -0.3 -1.3" height="0.15" width="0.3">
         </a-image>
         <!-- 色変更 -->
         <a-image src="button/1pan_1.jpeg"
           btn="hover: button/1pan_2.jpeg; clearedHover: button/1pan_1.jpeg; sky: #C0E5F0; room: 3Dmodel/classroom.glb; kitchen: 3Dmodel/kitchen_s.glb; niku_0: yakiniku_00_c.glb; niku_1: yakiniku_01_c.glb; niku_2: yakiniku_02_c.glb"
-          class="collidable" data-type="color_btn" position="0 0 -1.5" height="0.2" width="0.2"></a-image>
+          class="collidable" data-type="color_btn" position="0 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/1gata_1.jpeg"
           btn="hover: button/1gata_2.jpeg; clearedHover: button/1gata_1.jpeg; sky: #DDE2F1; room: 3Dmodel/classroom_1.glb; kitchen: 3Dmodel/kitchen_s1.glb; niku_0: yakiniku_00_p.glb; niku_1: yakiniku_01_p.glb; niku_2: yakiniku_02_p.glb"
-          class="collidable" data-type="color_btn" position="0.2 0 -1.5" height="0.2" width="0.2"></a-image>
+          class="collidable" data-type="color_btn" position="0.2 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/2gata_1.jpeg"
           btn="hover: button/2gata_2.jpeg; clearedHover: button/2gata_1.jpeg; sky: #D6DCF0; room: 3Dmodel/classroom_2.glb; kitchen: 3Dmodel/kitchen_s2.glb; niku_0: yakiniku_00_d.glb; niku_1: yakiniku_01_d.glb; niku_2: yakiniku_02_d.glb"
-          class="collidable" data-type="color_btn" position="0.4 0 -1.5" height="0.2" width="0.2"></a-image>
+          class="collidable" data-type="color_btn" position="0.4 0 -1.3" height="0.2" width="0.2"></a-image>
         <a-image src="button/3gata_1.jpeg"
           btn="hover: button/3gata_2.jpeg; clearedHover: button/3gata_1.jpeg; sky: #B2E9E8; room: 3Dmodel/classroom_3.glb; kitchen: 3Dmodel/kitchen_s3.glb; niku_0: yakiniku_00_t.glb; niku_1: yakiniku_01_t.glb; niku_2: yakiniku_02_t.glb"
-          class="collidable" data-type="color_btn" position="0.6 0 -1.5" height="0.2" width="0.2"></a-image>
-        <!-- <a-cursor></a-cursor> -->
+          class="collidable" data-type="color_btn" position="0.6 0 -1.3" height="0.2" width="0.2"></a-image>
         <!-- お手本表示 -->
-        <a-image src="sample.png" id="sample" position="-0.8 -0.1 -1.5" height="0.6" width="0.9"></a-image>
+        <a-image src="button/yaku_2.jpeg" btn="hover: button/yaku_1.jpeg; clearedHover: button/yaku_1.jpeg;" btn
+          class="collidable" data-type="sample_btn" position="0.1 -0.3 -1.3" height="0.15" width="0.3"></a-image>
+
+        <!-- お手本表示 -->
+        <a-image src="sample.png" id="sample" position="-0.8 -0.1 -1.3" height="0.6" width="0.9"></a-image>
 
         <a-entity id="ctlR" laser-controls="hand: right"
           raycaster="far: 20; interval: 1000; lineColor: red; objects: .collidable" position="0 1 0"></a-entity>
@@ -94,7 +99,7 @@
     let meshes0 = [];
     let meshes1 = [];
     let meshes2 = [];
-    const nikuImg = document.getElementById('introImage');
+    const fryingPan = document.getElementById('frying_pan');
     let running = false;
     const roomColor = document.querySelector('.classroom');
     const kitchenColor = document.querySelectorAll('.kitchen');
@@ -109,11 +114,7 @@
     let vol = 0;
     let uiVisible = true;
     let sampleVisible = false;
-
-    // 表示する文字
-    // const textList = ["色覚多様性について\n色の見え方は人によって異なります。\nまずは実際に、どのように見えるのか見てみましょう。",
-    //   "このように、\n同じ肉でも人によって見え方が違います。",
-    //   "それでは、実際に体験してもらいましょう！\n体験が終わったら、ぜひ感想を教えてください。"];
+    // let isHovering = false;
 
 
     // 調理室の表示
@@ -141,20 +142,6 @@
           m.setAttribute('visible', 'true');
         })
         introImage.setAttribute('visible', 'false');
-
-        // 右gripを押すとUI非表示
-        ctlR.addEventListener('gripup', () => {
-          uiVisible = !uiVisible;
-          collidable.forEach(m => {
-            m.setAttribute('visible', uiVisible);
-          });
-        });
-        // 左gripを押すとお手本表示
-        ctlL.addEventListener('gripup', () => {
-          sampleVisible = !sampleVisible;
-          sample.setAttribute('visible', sampleVisible);
-          console.log(sampleVisible)
-        });
       }
     });
     ctlL.addEventListener('triggerup', () => {
@@ -245,6 +232,15 @@
           }
         });
 
+
+        // 右gripを押すとUI非表示
+        ctlR.addEventListener('gripup', () => {
+          uiVisible = !uiVisible;
+          collidable.forEach(m => {
+            m.setAttribute('visible', uiVisible);
+          });
+        });
+
         // type取得
         const type = el.dataset.type;
         if (type === "yaku_btn") {  // 焼くボタンが押された時の処理
@@ -320,6 +316,15 @@
 
             fadingOut = true;
             vol = 0;
+          });
+        } else if (type === "sample_btn") {
+          ctlR.addEventListener("triggerup", (e) => {
+            if (!uiVisible) return;  // 表示されないときは処理しない
+            if (!isHovering) return; // レイが当たっていない場合は処理しない
+
+            sampleVisible = !sampleVisible;
+            sample.setAttribute('visible', sampleVisible);
+            console.log(sampleVisible)
           });
         } else {  // 他のボタンが押されたときの処理
           ctlR.addEventListener("triggerup", () => {
