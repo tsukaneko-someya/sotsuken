@@ -31,3 +31,5 @@ sotsuken_test.html
 URL：https://tsukaneko-someya.github.io/sotsuken/
 
 アンケート；https://docs.google.com/forms/d/1zNoF2NJqKZcDQoM5F7f-sW1pvTvPUrTlaqCBaSbHHJg/edit
+
+染谷の卒論：https://1drv.ms/w/c/b907526a2d1e4447/IQBuGrW3zrcdTpZk0yP0LZwVAYv7oFUuWBf5B_lxX7AtpsI?e=ulmY9U
