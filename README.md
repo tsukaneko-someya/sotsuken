@@ -39,3 +39,4 @@ URL：https://tsukaneko-someya.github.io/sotsuken/
 https://1drv.ms/w/c/b907526a2d1e4447/IQD3YuEiCC3ZRJJGbPpWZ6HpAQMYpdwPxwTkeDf4Ah7aTwU?e=RsIZZ3
 
 フォントを変えないように気を付けて！
+Web版のWordで開くと少しレイアウトが崩れるかも
