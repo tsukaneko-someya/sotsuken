@@ -43,4 +43,4 @@ Web版のWordで開くと少しレイアウトが崩れるかも
 
 詳しくはこれに書いていることを参考に！
 
-https://drive.google.com/drive/folders/1QfI_Lb5UCZyqQUhiU3sud7QKHg1XsLiI
+https://drive.google.com/file/d/1rmjCWv115HoCkTssc7VlPwVvLl2kq9pt/view?usp=sharing
