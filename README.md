@@ -36,7 +36,7 @@ URL：https://tsukaneko-someya.github.io/sotsuken/
 
 要旨（卒論を１ページにまとめるやつ、２人で一つ提出、1/4までにやった方がいいかもしれない）：
 
-https://1drv.ms/w/c/b907526a2d1e4447/IQD3YuEiCC3ZRJJGbPpWZ6HpAQMYpdwPxwTkeDf4Ah7aTwU?e=RsIZZ3
+https://1drv.ms/w/c/b907526a2d1e4447/IQD3YuEiCC3ZRJJGbPpWZ6HpAaR7gB6AC-7V0JzdzZak-c8?e=nNBVPU
 
 フォントを変えないように気を付けて！
 Web版のWordで開くと少しレイアウトが崩れるかも
