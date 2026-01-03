@@ -34,17 +34,6 @@ URL：https://tsukaneko-someya.github.io/sotsuken/
 
 染谷の卒論：https://1drv.ms/w/c/b907526a2d1e4447/IQBuGrW3zrcdTpZk0yP0LZwVAYv7oFUuWBf5B_lxX7AtpsI?e=umPboH
 
-要旨（卒論を１ページにまとめるやつ、２人で一つ提出、1/4までにやった方がいいかもしれない）：
+要旨（更新しました！)：
 
-https://1drv.ms/w/c/b907526a2d1e4447/IQD3YuEiCC3ZRJJGbPpWZ6HpAaR7gB6AC-7V0JzdzZak-c8?e=nNBVPU
-
-フォントを変えないように気を付けて！
-Web版のWordで開くと少しレイアウトが崩れるかも
-
-詳しくはこれに書いていることを参考に！
-
-https://drive.google.com/file/d/1rmjCWv115HoCkTssc7VlPwVvLl2kq9pt/view?usp=sharing
-
-先輩のやつ？
-
-https://drive.google.com/file/d/1FoycyJubhidbzG3lQKwu66FvUh0vfQZC/view?usp=sharing
+https://1drv.ms/w/c/b907526a2d1e4447/IQCkEPtYTAPYT5K1ADz8gDhmATa3lT33JrNh2eO7vIZq9lU?e=Wi1R3h
