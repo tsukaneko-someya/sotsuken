@@ -34,6 +34,6 @@ URL：https://tsukaneko-someya.github.io/sotsuken/
 
 染谷の卒論：https://1drv.ms/w/c/b907526a2d1e4447/IQBuGrW3zrcdTpZk0yP0LZwVAYv7oFUuWBf5B_lxX7AtpsI?e=umPboH
 
-要旨（更新しました！)：
+要旨（1/4 18:09 更新)：
 
 https://1drv.ms/w/c/b907526a2d1e4447/IQCkEPtYTAPYT5K1ADz8gDhmATa3lT33JrNh2eO7vIZq9lU?e=Wi1R3h
