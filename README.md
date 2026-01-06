@@ -38,6 +38,6 @@ URL：https://tsukaneko-someya.github.io/sotsuken/
 
 https://1drv.ms/w/c/b907526a2d1e4447/IQCkEPtYTAPYT5K1ADz8gDhmATa3lT33JrNh2eO7vIZq9lU?e=Wi1R3h
 
-プレゼン
+プレゼン 20枚まで
 
 https://docs.google.com/presentation/d/1YnPWwxNPNJ6OLkWwecY4m7g9LAXcxWxePIEaUMBXTJ0/edit?usp=sharing
