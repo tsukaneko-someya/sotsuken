@@ -41,3 +41,6 @@ https://1drv.ms/w/c/b907526a2d1e4447/IQCkEPtYTAPYT5K1ADz8gDhmATa3lT33JrNh2eO7vIZ
 プレゼン 20枚まで
 
 https://docs.google.com/presentation/d/1YnPWwxNPNJ6OLkWwecY4m7g9LAXcxWxePIEaUMBXTJ0/edit?usp=sharing
+
+発表
+https://docs.google.com/document/d/19YXb8GSXCArfgQilSz_OrRHin1VYc9qOM8Zcm1xApW8/edit?usp=sharing
